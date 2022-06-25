@@ -1,6 +1,10 @@
 const counterEl = document.getElementById("counter")
 const totalCount = document.getElementById("total")
 let count = 0
+let countHi = 0
+let countLow = 0
+let countSum = 0
+
 
 function textColor() {
   if (count > 0) {
@@ -13,29 +17,36 @@ function textColor() {
 }
 
 function increase() {
-  count = count + 1
+  count += 1
+  countHi = count
   counterEl.innerHTML = count
   textColor()
 }
 
 function decrease() {
-  count = count - 1
+  count -= 1
+  countLow = count
   counterEl.innerHTML = count
   textColor()
 }
 
 function reset() {
+  count = countSum
   count = 0
   counterEl.innerHTML = count
+  totalCount.innerHTML = ""
   textColor()
 }
 
 function printTotal() {
-  let countStr = count
+x = countHi
+y = countLow
 
-  if (count > 0){
-    totalCount.innerHTML = `Seems like your Highs are ${countStr}. KEEP IT UP.`
-  } else if (count < 0) {
-    totalCount.innerHTML = `Seems like your Lows are ${countStr}. BETTER LUCK NEXT TIME.`
+  countSum = x + y
+
+  if (countSum > 0) {
+    totalCount.innerHTML = `Seems like your Highs are ${countSum}. KEEP IT UP.`
+  } else if (countSum < 0) {
+    totalCount.innerHTML = `Seems like your Lows are ${countSum}. BETTER LUCK NEXT TIME.`
   }
 }
